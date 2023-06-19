@@ -14,13 +14,15 @@ public class square_movement : MonoBehaviour
 
     private Rigidbody2D player;
 
-    private float speed = 2;
+    public float speed = 2;
 
-    private float speedcap = 10;
+    public float speedcap = 10;
 
     // private float drag = 3;
 
-    // private float jumpheight = 1;
+    public float jumpheight = 1;
+
+    private bool canJump;
 
  
 
@@ -61,9 +63,17 @@ public class square_movement : MonoBehaviour
             player.velocity += new Vector2(Input.GetAxis("Horizontal") * speed, 0);
 
         }    
+        if (Input.GetButtonDown("Jump") && canJump)
+        {
+            player.velocity += new Vector2(0, jumpheight);
+            canJump = false;
+        }
 
-       
 
+    }
+    void OnCollisionEnter2D()
+    {
+        canJump = true;
     }
 
 }
