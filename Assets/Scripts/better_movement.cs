@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class better_movement : MonoBehaviour
 {
+
+
     public float speed = 5f;  // Speed of the player movement
+
+
 
     private Rigidbody2D rb;
 
