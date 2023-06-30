@@ -7,14 +7,45 @@ public class bettermovement : MonoBehaviour
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
+    public static bool isUpPressed = true;
+
     public static bool isFacingRight = true;
+
+    public int health;
+
+    public int maxHealth;
+    public int iFrames = 40;
+
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    
+
+
+
+
+    void Start()
+    {
+        health = maxHealth;
+    }
+
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && iFrames <= 0)
+        {
+            health -= 1;
+            iFrames = 40;
+            Debug.Log(health);
+        }
+        if (health == 0)
+        {
+            Destroy(gameObject);
+
+        }
+    }    
 
     void Update()
     {
@@ -36,11 +67,13 @@ public class bettermovement : MonoBehaviour
         }
 
         Flip();
+        
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        iFrames --;
     }
 
     private bool IsGrounded()

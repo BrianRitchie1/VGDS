@@ -26,7 +26,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         float r = Random.Range(0,1000);
-        Debug.Log(r);
+        
         if (r <= 3)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump);
