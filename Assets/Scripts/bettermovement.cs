@@ -11,7 +11,7 @@ public class bettermovement : MonoBehaviour
 
     public static bool isFacingRight = true;
 
-    public int health;
+    public static int health;
 
     public int maxHealth;
     public int iFrames = 40;
