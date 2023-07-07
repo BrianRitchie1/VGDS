@@ -15,6 +15,7 @@ public class bettermovement : MonoBehaviour
 
     public int maxHealth;
     public int iFrames = 40;
+    public static bool isAlive = true;
 
 
     [SerializeField] private Rigidbody2D rb;
@@ -42,7 +43,7 @@ public class bettermovement : MonoBehaviour
         }
         if (health == 0)
         {
-            Destroy(gameObject);
+            isAlive = false;
 
         }
     }    
@@ -51,17 +52,17 @@ public class bettermovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded ())
+        if (Input.GetButtonDown("Jump") && IsGrounded () && isAlive)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if (Input.GetButtonDown("Jump") && IsWalled ())
+        if (Input.GetButtonDown("Jump") && IsWalled () && isAlive)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && isAlive)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
@@ -72,8 +73,11 @@ public class bettermovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        iFrames --;
+        if (isAlive)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            iFrames --;
+        }
     }
 
     private bool IsGrounded()
@@ -87,7 +91,7 @@ public class bettermovement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if ((isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f) && isAlive)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour
     {
 
         
-        if(Keyboard.current.pKey.wasPressedThisFrame)
+        if(Keyboard.current.pKey.wasPressedThisFrame && bettermovement.isAlive)
         {
             bullet = Instantiate(bulletPrefab, shootingPoint.position, transform.rotation).GetComponent<Rigidbody2D>();
             
