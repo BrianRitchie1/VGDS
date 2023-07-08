@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class bettermovement : MonoBehaviour
 {
@@ -24,12 +26,13 @@ public class bettermovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-
-
+    public Text gameOverScreen;
+    private int respawnTimer = 300;
 
     void Start()
     {
         health = maxHealth;
+        isAlive = true;
     }
 
 
@@ -41,9 +44,14 @@ public class bettermovement : MonoBehaviour
             iFrames = 40;
             Debug.Log(health);
         }
-        if (health == 0)
+        if (health <= 0)
         {
             isAlive = false;
+
+
+            
+            gameOverScreen.text = "Game Over\n\nYou Suck\n\nScore: " + UIScript.score;
+
 
         }
     }    
@@ -68,6 +76,16 @@ public class bettermovement : MonoBehaviour
         }
 
         Flip();
+
+
+        if (!isAlive)
+        {
+            respawnTimer --;
+            if (respawnTimer <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
         
     }
 
