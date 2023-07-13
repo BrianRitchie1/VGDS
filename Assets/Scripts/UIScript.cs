@@ -19,5 +19,6 @@ public class UIScript : MonoBehaviour
     void Update()
     {
         ui.text = "Score: " + UIScript.score + "\nHealth: " + bettermovement.health;
+
     }
 }

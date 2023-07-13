@@ -48,8 +48,6 @@ public class bettermovement : MonoBehaviour
         {
             isAlive = false;
 
-
-            
             gameOverScreen.text = "Game Over\n\nYou Suck\n\nScore: " + UIScript.score;
 
 
@@ -84,6 +82,8 @@ public class bettermovement : MonoBehaviour
             if (respawnTimer <= 0)
             {
                 SceneManager.LoadScene(0);
+                UIScript.score *= 0;
+
             }
         }
         
