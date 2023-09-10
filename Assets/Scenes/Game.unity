@@ -1137,15 +1137,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905910064062278463, guid: 7d94d6304fd5ebc43ad057f36b52533e, type: 3}
       propertyPath: m_Color.b
-      value: 0.7529412
+      value: 0.6720155
       objectReference: {fileID: 0}
     - target: {fileID: 1905910064062278463, guid: 7d94d6304fd5ebc43ad057f36b52533e, type: 3}
       propertyPath: m_Color.g
-      value: 0.25686896
+      value: 0.16470589
       objectReference: {fileID: 0}
     - target: {fileID: 1905910064062278463, guid: 7d94d6304fd5ebc43ad057f36b52533e, type: 3}
       propertyPath: m_Color.r
-      value: 0.16470589
+      value: 0.7529412
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1905910064062278462, guid: 7d94d6304fd5ebc43ad057f36b52533e, type: 3}
@@ -22476,7 +22476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363fb10ef1071e641b8963b04a11e4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
 --- !u!61 &1997087249
 BoxCollider2D:
   m_ObjectHideFlags: 0
